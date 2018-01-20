@@ -33,3 +33,38 @@ h1 {
  	top: -8px;
  	margin-bottom:15px;
  }
+ .container {
+ 	display:inline-block;
+ 	width:250px;
+ 	height:300px;
+ }
+ .first{
+ 	width:160px;
+ 	height:110px;
+ 	display:inline-block;
+ 	padding: 0px 6px;
+ }
+ .second{
+ 	width:160px;
+ 	height:110px;
+ 	display: inline-block;
+ 	padding: 0px 6px;
+ }
+ .third{
+ 	width:160px;
+ 	height:110px;
+ 	display:inline-block;
+ 	padding: 0px 6px;
+ }
+ .fourth{
+ 	width:160px;
+ 	height:110px;
+ 	display:inline-block;
+ 	padding: 0px 6px;
+ }
+ .fifth{
+ 	width:160px;
+ 	height:110px;
+ 	display: inline-block;
+ 	padding: 0px 6px;
+ }

@@ -58,6 +58,11 @@ html, body {
 	border: solid #fff 3px;
 
 }
+.quote {
+	margin-bottom: 200px;
+	font-size:30px;
+	color:white;
+}
 
 @media screen and (max-width: 768px){
 	.content h1{
