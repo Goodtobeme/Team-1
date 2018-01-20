@@ -1,0 +1,35 @@
+html {
+	height:100%;
+	width: 100%;
+	margin:auto;
+	background: url("https://static.pexels.com/photos/373883/pexels-photo-373883.jpeg");
+	display:table;
+	top:0;
+	background-size: cover;
+
+}
+h1 {
+	font-size: 60px;
+    color: #6b420c;
+}
+
+.btn-red {
+	height: 30px;
+    color: #190a86;
+    background-color: #c57811;
+}
+.btn-red1 {
+		height: 30px;
+    color: #190a86;
+    background-color: #c57811;
+}
+ #books {
+ 	height:35px;
+ 	width:350px;
+ }
+ #imagebutton {
+ 	position:relative;
+ 	left:-10px;
+ 	top: -8px;
+ 	margin-bottom:15px;
+ }
