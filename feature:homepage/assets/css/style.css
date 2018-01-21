@@ -62,6 +62,7 @@ html, body {
 	margin-bottom: 200px;
 	font-size:30px;
 	color:white;
+	font-family:cursive;
 }
 
 @media screen and (max-width: 768px){
