@@ -11,6 +11,7 @@ $(document).ready(function() {
         	var modal = document.getElementById('simpleModal');
         	var modalBtn = document.getElementById('modalBtn');
         	var closeBtn = document.getElementById('closeBtn');
+
              
             modal.style.display = 'block';
 
