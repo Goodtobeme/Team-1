@@ -9,7 +9,7 @@ $(document).ready(function() {
         if (search == "") {
         	console.log("search is empty")
         	var modal = document.getElementById('simpleModal');
-        	var modalBtn = document.getElementById('modalBtn');
+        	var modalBtn = document.getElementById('btn-red');
         	var closeBtn = document.getElementById('closeBtn');
 
              
