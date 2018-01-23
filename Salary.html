@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:700|Patua+One|Roboto+Condensed:700" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/Salary.css">
+  <link rel="stylesheet" type="text/css" href="Salary.js">
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <title>Get Hired</title>
+
+</head>
+<body>
+
+  <div class="site-wrapper">
+
+  <div class="site-wrapper-inner">
+
+  <div class="cover-container">
+
+  <header class="masthead clearfix">
+  <div class="inner">
+  <h3 class="masthead-brand">ROE</h3>
+  <nav class="nav nav-masthead">
+    <a class="nav-link active" href="index.html">Home</a>
+    <a class="nav-link" href="salaries.html">Salaries</a>
+    <a class="nav-link" href="contactdemo.html">Contact</a>
+  </nav>
+  </div>
+  </header>
+
+  <main role="main" class="inner cover">
+  <h1 class="cover-heading">Get Hired</h1>
+  <p class="lead">Welcome to the most helpful website for recent graduates!</p>
+  <p>Please Enter Job Title, and a US Zipcode to search for relevant job training resources and salary information</p>
+
+  <form id="zipCodeForm" class="form-horizontal">
+  <div class="form-group">
+    <label class="col-xs-3 control-label">Country</label>
+  <div class="col-xs-5">
+    <select class="form-control" name="countrySelectBox">
+    <option value="US">United States</option>
+  </div>
+  </div>
+  <div class="form-group">
+  <label id="job-input" class="col-xs-3 control-label"></label>
+  <div class="col-xs-5">
+  <input type="text" class="form-control mb-2 mr-sm-2" id="job-title" placeholder="Job title">
+  <button id="buttonsubmit" type="submit" class="btn btn-primary mb-2">Submit</button>
+  <button id="saveResults" type="submit" class="btn btn-primary mb-2">Save</button>
+  </div>
+  </div>
+  </form>
+  </main>
+
+  </div>
+ </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12"
+   <h2>Basic Table</h2>
+  
+   <table class="table">
+     <thead>
+       <tr>
+         <th>Company Name</th>
+         <th>Title</th>
+         <th>Salary Min</th>
+         <th>Salary Max</th>
+         <th>Location</th>
+
+       </tr>
+     </thead>
+     <tbody id="results">
+     <th id="company"></th>
+         <th id="title"></th>
+         <th id="SalaryMin"></th>
+         <th id="SalaryMax"></th>
+         <th id="Location"></th>
+
+     </tbody>
+   </table>
+ </div>
+</div>
+</div>
+<script src="assets/javascript/main.js"></script>
+
+</body>
+</html>
