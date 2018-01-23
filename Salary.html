@@ -6,89 +6,116 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Oswald:700|Patua+One|Roboto+Condensed:700" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="assets/css/Salary.css">
-  <link rel="stylesheet" type="text/css" href="Salary.js">
-  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-
+   <link rel="stylesheet" type="text/css" href="assets/css/Salary.css">
+    <link rel="stylesheet" type="text/css" href="assets/javascript/Salary.js">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <title>Get Hired</title>
 
 </head>
+
 <body>
 
-  <div class="site-wrapper">
+	  <div class="container">
 
-  <div class="site-wrapper-inner">
+    <h1>Job Search Results</h1>
 
-  <div class="cover-container">
 
-  <header class="masthead clearfix">
-  <div class="inner">
-  <h3 class="masthead-brand">ROE</h3>
-  <nav class="nav nav-masthead">
-    <a class="nav-link active" href="index.html">Home</a>
-    <a class="nav-link" href="salaries.html">Salaries</a>
-    <a class="nav-link" href="contactdemo.html">Contact</a>
-  </nav>
+    <!-- We'll be dumping our JSON contents in here -->
+    <div id="job-view"></div>
+
+    <!-- This form will be where users input data about the movies -->
+    <form id="job-form">
+      <label for="job-input">Job Type</label>
+      <input type="text" id="job-input"><br>
+
+      <!-- This button will trigger our AJAX call -->
+      <input id="find-job" type="submit" id="submit"> Submit
+    </form>
+    <div class="container">
+    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Company Name</th>
+          <th>Title</th>
+          <th>Salary Min</th>
+          <th>Salary Max</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+      </tbody>
+    </table>
   </div>
-  </header>
 
-  <main role="main" class="inner cover">
-  <h1 class="cover-heading">Get Hired</h1>
-  <p class="lead">Welcome to the most helpful website for recent graduates!</p>
-  <p>Please Enter Job Title, and a US Zipcode to search for relevant job training resources and salary information</p>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
 
-  <form id="zipCodeForm" class="form-horizontal">
-  <div class="form-group">
-    <label class="col-xs-3 control-label">Country</label>
-  <div class="col-xs-5">
-    <select class="form-control" name="countrySelectBox">
-    <option value="US">United States</option>
-  </div>
-  </div>
-  <div class="form-group">
-  <label id="job-input" class="col-xs-3 control-label"></label>
-  <div class="col-xs-5">
-  <input type="text" class="form-control mb-2 mr-sm-2" id="job-title" placeholder="Job title">
-  <button id="buttonsubmit" type="submit" class="btn btn-primary mb-2">Submit</button>
-  <button id="saveResults" type="submit" class="btn btn-primary mb-2">Save</button>
-  </div>
-  </div>
-  </form>
-  </main>
 
-  </div>
- </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12"
-   <h2>Basic Table</h2>
-  
-   <table class="table">
-     <thead>
-       <tr>
-         <th>Company Name</th>
-         <th>Title</th>
-         <th>Salary Min</th>
-         <th>Salary Max</th>
-         <th>Location</th>
+      // This .on("click") function will trigger the AJAX Call
+      $("#find-job").on("click", function(event) {
 
-       </tr>
-     </thead>
-     <tbody id="results">
-     <th id="company"></th>
-         <th id="title"></th>
-         <th id="SalaryMin"></th>
-         <th id="SalaryMax"></th>
-         <th id="Location"></th>
+        // event.preventDefault() can be used to prevent an event's default behavior.
+        // Here, it prevents the submit button from trying to submit a form when clicked
+        event.preventDefault();
 
-     </tbody>
-   </table>
- </div>
-</div>
-</div>
-<script src="assets/javascript/main.js"></script>
+        // Here we grab the text from the input box
+        var job = $("#job-input").val();
+
+        // Here we construct our URL
+
+        var queryURL = "https://api.adzuna.com:443/v1/api/jobs/us/search/1?app_id=8614e098&app_key=ebec9d6eb44e4229da6af5f00c45989b&results_per_page=20&what=javascript%20developer&content-type=application/json"
+        // var queryURL = "https://https://api.adzuna.com:443/v1/api/jobs/us/top_companies?j=" + job + "US&location1=&"
+        // var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+        // Write code between the dashes below to hit the queryURL with $ajax, then take the response data
+        // and display it in the div with an id of movie-view
+
+        //------YOUR CODE GOES IN THESE DASHES. DO NOT MANUALLY EDIT THE HTML ABOVE.
+        var resultsSet = []
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+            var results = response.results
+
+            for(i=0;i < results.length; i++){
+        // <tr>
+        //   <td></td>
+        //   <td></td>
+        //   <td></td>
+        // </tr>
+          console.log('Title', results[i])
+              // $("#results").append(results[i].salary_max)
+              console.log('Desc',results[i].description)
+              console.log('Title', results[i].title)
+              $("#company").append("<div class='company'>" +results[i].company.display_name + "</div>")
+              $("#title").append("<div class='title'>" +results[i].title + "</div>")
+              $("#SalaryMin").append("<div class='minSalary'>"+ "$" +results[i].salary_min + "</div>")
+              $("#SalaryMax").append("<div class='maxSalary'>"+ "$" +results[i].salary_max + "</div>")
+              $("#Location").append("<div class='location'>" +results[i].location.display_name + "</div>")
+
+
+          }
+      });
+        //         console.log('Desc',results[i].description)
+        //         console.log('Title', results[i].title)
+        //     }
+        //     console.log('DEM RESULTS =====>', response.results)
+        // });
+
+       // $.text = POST("text");
+       // console.log($text);
+        // -----------------------------------------------------------------------
+
+      });
+
+
+    </script>
+
+
 
 </body>
 </html>

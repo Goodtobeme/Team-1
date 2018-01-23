@@ -3,7 +3,7 @@
     apiKey: "AIzaSyCGs2tQlvv9ic3giwVxZul5Fmj90B45Wf0",
     authDomain: "test-e0986.firebaseapp.com",
     databaseURL: "https://test-e0986.firebaseio.com",
-    projectId: "test-e098e6",
+    aprojectId: "test-e098e6",
     storageBucket: "test-0986.appspot.com",
     messagingSenderId: "523766183191"
 
