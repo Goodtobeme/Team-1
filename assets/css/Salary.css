@@ -1,0 +1,17 @@
+body {
+  background-image: url("https://image.freepik.com/free-vector/abstract-global-technology-background-with-connecting-dots_1048-5940.jpg");
+  position: relative;
+  font-family: 'Roboto Condensed', sans-serif;
+  height: 100%;
+  color: white;
+  font-size: 18px;
+}
+
+ #job-input {
+  color: black;
+  font-size: 16px;
+}
+
+h1 {
+  margin-left: -73px;
+}

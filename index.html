@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:700|Patua+One|Roboto+Condensed:700" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="assets/css/Salary.css">
+    <script src="assets/javascript/Salary.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <title>Get Hired</title>
+
+</head>
+
+<body>
+
+	  <div class="container">
+
+    <h1>Job Search Results</h1>
+
+
+    <!-- We'll be dumping our JSON contents in here -->
+    <div id="job-view"></div>
+
+    <!-- This form will be where users input data about the jobs -->
+    <form id="job-form">
+      <label for="job-input">Job Type</label>
+      <input type="text" id="job-input"><br>
+
+      <!-- This button will trigger our AJAX call -->
+      <input id="find-job" type="submit" id="submit"> Submit
+    </form>
+    <div class="container">
+    <br>
+    <table id="table" class="table">
+      <thead>
+        <tr>
+          <th>Company Name</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Location</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+      </tbody>
+    </table>
+  </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+
+      // This .on("click") function will trigger the AJAX Call
+      $("#find-job").on("click", function(event) {
+
+        // event.preventDefault() can be used to prevent an event's default behavior.
+        // Prevents the submit button from trying to submit a form when clicked
+        // or prevents the link  from following the URL
+        event.preventDefault();
+
+        // Here we grab the text from the input box
+        var job = $("#job-input").val();
+
+        // Here we construct our URL
+         var queryURL = 'https://api.adzuna.com:443/v1/api/jobs/us/search/1?app_id=8614e098&app_key=ebec9d6eb44e4229da6af5f00c45989b&results_per_page=20&what='+job+'&content-type=application/json';
+
+         // Hitting the queryURL with $ajax, which takes the response data
+        // and display it in the div with an id of job
+        // Callbacks are executed in the order they were added
+
+        var resultsSet = []
+
+        $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).done(function(response) {
+            var results = response.results
+
+              // Looping through to find results
+            for(i=0;i < results.length; i++){
+
+
+              console.log('Title', results[i])
+
+              console.log('Desc',results[i].description)
+              console.log('Title', results[i].title)
+
+              // Displays the results of <td> in <tr>company,title, description, location
+            var row = $('<tr><td>'+results[i].company.display_name+'</td><td>'+results[i].title+'</td><td>'+results[i].description+'</td><td>'+results[i].location.display_name+'</td></tr>');
+            $('#table').append(row);
+          }
+      });
+
+
+      });
+
+
+    </script>
+
+</body>
+</html>
