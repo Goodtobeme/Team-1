@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css?family=Oswald:700|Patua+One|Roboto+Condensed:700" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="assets/css/Salary.css">
-    <link rel="stylesheet" type="text/css" href="assets/javascript/Salary.js">
+    <script src="assets/javascript/Salary.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <title>Get Hired</title>
 
@@ -23,7 +23,7 @@
     <!-- We'll be dumping our JSON contents in here -->
     <div id="job-view"></div>
 
-    <!-- This form will be where users input data about the movies -->
+    <!-- This form will be where users input data about the jobs -->
     <form id="job-form">
       <label for="job-input">Job Type</label>
       <input type="text" id="job-input"><br>
@@ -33,13 +33,12 @@
     </form>
     <div class="container">
     <br>
-    <table class="table">
+    <table id="table" class="table">
       <thead>
         <tr>
           <th>Company Name</th>
           <th>Title</th>
-          <th>Salary Min</th>
-          <th>Salary Max</th>
+          <th>Description</th>
           <th>Location</th>
         </tr>
       </thead>
@@ -58,64 +57,48 @@
       $("#find-job").on("click", function(event) {
 
         // event.preventDefault() can be used to prevent an event's default behavior.
-        // Here, it prevents the submit button from trying to submit a form when clicked
+        // Prevents the submit button from trying to submit a form when clicked
+        // or prevents the link  from following the URL
         event.preventDefault();
 
         // Here we grab the text from the input box
         var job = $("#job-input").val();
 
         // Here we construct our URL
+         var queryURL = 'https://api.adzuna.com:443/v1/api/jobs/us/search/1?app_id=8614e098&app_key=ebec9d6eb44e4229da6af5f00c45989b&results_per_page=20&what='+job+'&content-type=application/json';
 
-        var queryURL = "https://api.adzuna.com:443/v1/api/jobs/us/search/1?app_id=8614e098&app_key=ebec9d6eb44e4229da6af5f00c45989b&results_per_page=20&what=javascript%20developer&content-type=application/json"
-        // var queryURL = "https://https://api.adzuna.com:443/v1/api/jobs/us/top_companies?j=" + job + "US&location1=&"
-        // var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+         // Hitting the queryURL with $ajax, which takes the response data
+        // and display it in the div with an id of job
+        // Callbacks are executed in the order they were added
 
-        // Write code between the dashes below to hit the queryURL with $ajax, then take the response data
-        // and display it in the div with an id of movie-view
-
-        //------YOUR CODE GOES IN THESE DASHES. DO NOT MANUALLY EDIT THE HTML ABOVE.
         var resultsSet = []
+
         $.ajax({
           url: queryURL,
           method: "GET"
         }).done(function(response) {
             var results = response.results
 
+              // Looping through to find results
             for(i=0;i < results.length; i++){
-        // <tr>
-        //   <td></td>
-        //   <td></td>
-        //   <td></td>
-        // </tr>
-          console.log('Title', results[i])
-              // $("#results").append(results[i].salary_max)
+
+
+              console.log('Title', results[i])
+
               console.log('Desc',results[i].description)
               console.log('Title', results[i].title)
-              $("#company").append("<div class='company'>" +results[i].company.display_name + "</div>")
-              $("#title").append("<div class='title'>" +results[i].title + "</div>")
-              $("#SalaryMin").append("<div class='minSalary'>"+ "$" +results[i].salary_min + "</div>")
-              $("#SalaryMax").append("<div class='maxSalary'>"+ "$" +results[i].salary_max + "</div>")
-              $("#Location").append("<div class='location'>" +results[i].location.display_name + "</div>")
 
-
+              // Displays the results of <td> in <tr>company,title, description, location
+            var row = $('<tr><td>'+results[i].company.display_name+'</td><td>'+results[i].title+'</td><td>'+results[i].description+'</td><td>'+results[i].location.display_name+'</td></tr>');
+            $('#table').append(row);
           }
       });
-        //         console.log('Desc',results[i].description)
-        //         console.log('Title', results[i].title)
-        //     }
-        //     console.log('DEM RESULTS =====>', response.results)
-        // });
 
-       // $.text = POST("text");
-       // console.log($text);
-        // -----------------------------------------------------------------------
 
       });
 
 
     </script>
-
-
 
 </body>
 </html>

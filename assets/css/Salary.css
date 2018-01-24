@@ -1,19 +1,17 @@
 body {
-	 background-image: url("https://image.freepik.com/free-vector/abstract-global-technology-background-with-connecting-dots_1048-5940.jpg");
+  background-image: url("https://image.freepik.com/free-vector/abstract-global-technology-background-with-connecting-dots_1048-5940.jpg");
   position: relative;
   font-family: 'Roboto Condensed', sans-serif;
   height: 100%;
- color: white;
- font-size: 18px;
-
-  /*color: #fff;https://s-media-cache-ak0.pinimg.com/originals/f8/fb/a2/f8fba21c09ca08ab3cd3c09671e322e0.jpg  text-align: center;*/
+  color: white;
+  font-size: 18px;
 }
 
-	#job-input {
+ #job-input {
   color: black;
   font-size: 16px;
 }
 
 h1 {
-	margin-left: -73px;
+  margin-left: -73px;
 }
